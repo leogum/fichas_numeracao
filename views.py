@@ -44,7 +44,7 @@ def search_fichas():
                     inside_files_list.append(teste)
     inside_files_list.append(pdf_dict)
 
-# refaz a lista para tirar itens que estao repetidos> função futura
+    # refaz a lista para tirar itens que estao repetidos> função futura
     unique_list = list()
     for i in range(len(inside_files_list)):
         if inside_files_list[i] not in inside_files_list[i + 1:]:
