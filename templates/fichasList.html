@@ -1,0 +1,79 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<div class="col-xl-auto">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <i class="fas fa-table"></i>
+            {{ titulo|title }}
+        </div>
+        <div class="card-body">
+            <br/>
+            <div class="table-responsive">
+                <div class="dataTables_wrapper dt-bootstrap4" id="dataTable_wrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table aria-describedby="dataTable_info" cellspacing="0"
+                                   class="table table-bordered dataTable "
+                                   id="dataTable" role="grid" style="width: 100%;" width="100%">
+                                <thead class="bg-light">
+                                <tr role="row">
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting_asc" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Ficha de nº
+                                    </th>
+                                    <th colspan="1" rowspan="1" style="width: 243px;" tabindex="0">Acessar</th>
+                                </tr>
+                                </thead>
+                                <tfoot class="bg-light">
+                                <tr>
+                                    <th colspan="1" rowspan="1">Ficha de nº</th>
+                                    <th colspan="1" rowspan="1">Acessar</th>
+                                </tr>
+                                </tfoot>
+                                <tbody class="bg-white">
+                                {% if inside_files_list %}
+                                {% for y in inside_files_list %}
+                                {% for k,v in y.items() %}
+                                <tr class="odd" role="row">
+
+                                    <td class="sorting_1">{{ k }}</td>
+                                    {% if k.endswith('.pdf') %}
+                                    <td>
+                                        <a href="{{url_for('view_fichas', path=path, file=k, folder=k )}}"
+                                           target="_blank" title="{{k}}">
+                                            {{k}}
+                                        </a>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        {% for m in v %}
+                                        {% if not m.endswith('.db') %}
+
+                                        <a href="{{url_for('view_fichas', path=path, file=m , folder=k )}}"
+                                           target="_blank" title="{{m}}">
+                                            {{m}}
+                                        </a>
+                                        <br/>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                                {% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">
+            <a class="btn btn-primary " href="{{url_for('index')}}"> Voltar</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

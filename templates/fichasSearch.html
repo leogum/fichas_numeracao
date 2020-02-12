@@ -1,0 +1,62 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container col-xl-7">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+                <!--                tabpane principal-->
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                       id="home-tab"
+                       role="tab">{{ titulo|title }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <!--                tabpane principal-->
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <br/>
+                    <form action="{{ url_for('search_fichas') }}" enctype="multipart/form-data" method="post">
+                        <fieldset>
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="cd_codlog" maxlength="8" name="cd_codlog"
+                                           type="text" value="">
+                                    <label for="cd_codlog">CODLOG:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="col-xl-auto form-row ">
+                                <div class="col-xl-2 mb-auto">
+                                    <button class="btn btn-info btn-salvar " type="submit">
+                                        <a class="fa fa-search-plus"></a> Pesquisar
+                                    </button>
+                                </div>
+                                <div class="col-xl-2"></div>
+
+                                <div class="col-xl-2 mb-auto">
+                                    <a class="btn btn-primary " href="{{url_for('index')}}">
+                                        Voltar
+                                    </a>
+                                </div>
+
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-auto" hidden id="nm_login" name="nm_login"
+                                           type="text" value="{{session['logged_user']}}">
+                                    <label for="nm_login">Usuario: {{session['logged_user']}}</label>
+                                </div>
+                            </div>
+                            <br/>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">{{ titulo|title }}</div>
+    </div>
+</div>
+{% endblock %}
