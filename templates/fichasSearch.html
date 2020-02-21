@@ -23,7 +23,7 @@
                             <div class="form-row justify-content-xl-start">
                                 <div class="form-label-group col-xl-auto">
                                     <input class="form-control col-xl-10" id="cd_codlog" maxlength="8" name="cd_codlog"
-                                           type="text" value="">
+                                           type="text" value="" required>
                                     <label for="cd_codlog">CODLOG:</label>
                                 </div>
                             </div>
@@ -42,12 +42,6 @@
                                     <a class="btn btn-primary " href="{{url_for('index')}}">
                                         Voltar
                                     </a>
-                                </div>
-
-                                <div class="form-label-group col-xl-auto">
-                                    <input class="form-control col-xl-auto" hidden id="nm_login" name="nm_login"
-                                           type="text" value="{{session['logged_user']}}">
-                                    <label for="nm_login">Usuario: {{session['logged_user']}}</label>
                                 </div>
                             </div>
                             <br/>
